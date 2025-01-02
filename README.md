@@ -62,8 +62,12 @@ node index.js
 4. Metadata Update: IPFS metadata and image links are updated dynamically.
 5. Periodic Checks: Backend runs periodic updates.
 
+## Contact
+Twitter: @0xpoot_poot
+Email: 0xpoot@gmail.com
+
 ## Customisation
 - Update Token Conditions: Modify conditions in index.js for triggers (e.g. ETH price threshold).
 - Update Frequency: Modify the interval for periodic checks (setInterval) in index.js.
 
-- In case a reference for the project this was used with is needed, it can be found [here]()
+- In case a reference for the project this was used with is needed, it can be found [here](https://github.com/0xpoot-poot/nft-generator)
