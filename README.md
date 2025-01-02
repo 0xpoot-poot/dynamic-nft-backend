@@ -68,7 +68,9 @@ Email: 0xpoot@gmail.com
 
 ## Customisation
 - Update Token Conditions: Modify conditions in index.js for triggers (e.g. ETH price threshold).
-- Update Frequency: Modify the interval for periodic checks (setInterval) in index.js.
-
 - In case a reference for the project this was used with is needed, it can be found [here](https://github.com/0xpoot-poot/nft-generator)
 - Also, the Solidity script responsible for the deployed contract for the NFT can be found [here](https://github.com/0xpoot-poot/basic-solidity-contracts/tree/main/DeployNFT/contracts)
+- Update Frequency: Modify the interval for periodic checks (setInterval) in index.js.
+
+## Minting pre-existing NFTs
+In case you want to mine the NFTs of the collection I made (personally, I have only minted one), you can do so using the `mintNFT()` function that is unused in `index.js`. Ensure to pass in your wallet address and the following tokenURI format: `https://tan-labour-roundworm-161.mypinata.cloud/ipfs/bafybeib6j2ntpora67rfq4kekhrggjj6774ar2sox4yazotvcgqawfhm2i/nft_${tokenId}.json` where ${tokenId} ranges from 1 to 49.
