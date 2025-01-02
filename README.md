@@ -71,3 +71,4 @@ Email: 0xpoot@gmail.com
 - Update Frequency: Modify the interval for periodic checks (setInterval) in index.js.
 
 - In case a reference for the project this was used with is needed, it can be found [here](https://github.com/0xpoot-poot/nft-generator)
+- Also, the Solidity script responsible for the deployed contract for the NFT can be found [here](https://github.com/0xpoot-poot/basic-solidity-contracts/tree/main/DeployNFT/contracts)
