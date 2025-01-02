@@ -74,3 +74,5 @@ Email: 0xpoot@gmail.com
 
 ## Minting pre-existing NFTs
 In case you want to mine the NFTs of the collection I made (personally, I have only minted one), you can do so using the `mintNFT()` function that is unused in `index.js`. Ensure to pass in your wallet address and the following tokenURI format: `https://tan-labour-roundworm-161.mypinata.cloud/ipfs/bafybeib6j2ntpora67rfq4kekhrggjj6774ar2sox4yazotvcgqawfhm2i/nft_${tokenId}.json` where ${tokenId} ranges from 1 to 49.
+
+Also, you will need to import the NFT to metamask when minting from the backend. For some reason it will not just appear in your wallet, make sure to click the "Import NFT" button and put in the tokenId and contract address: `0x58f960E4AA01b9EBE72A51b76A92162C04eD03D3`.
