@@ -20,6 +20,9 @@ app.use(express.json());
 const provider = new ethers.JsonRpcProvider(`https://sepolia.infura.io/v3/${INFURA_API_KEY}`);
 const wallet = new ethers.Wallet(PRIVATE_KEY, provider);
 
+// change this to your own IPFS file path/link:
+const ipfsData = `https://tan-labour-roundworm-161.mypinata.cloud/ipfs/bafybeib6j2ntpora67rfq4kekhrggjj6774ar2sox4yazotvcgqawfhm2i`
+
 // smart contract ABI
 const CONTRACT_ABI = [
     "function mintNFT(address recipient, string memory tokenURI) public",
@@ -97,20 +100,20 @@ async function checkAndUpdateMetadata() {
                 
                 // check if metadata NEEDS to be updated, otherwise gas fees will be spent to change metadata to the same thing
                 if ((parseFloat(balanceInEth) < 1 || ethPrice < 2000) && 
-                    currentURI !== `https://tan-labour-roundworm-161.mypinata.cloud/ipfs/bafybeib6j2ntpora67rfq4kekhrggjj6774ar2sox4yazotvcgqawfhm2i/nft_${tokenId}_tears.json`) {
+                    currentURI !== ipfsData + `/nft_${tokenId}_tears.json`) {
                     
                     console.log(`⚠️ Condition met for Token ID: ${tokenId}. Updating metadata to tears...`);
-                    updateMetadata(tokenId, `https://tan-labour-roundworm-161.mypinata.cloud/ipfs/bafybeib6j2ntpora67rfq4kekhrggjj6774ar2sox4yazotvcgqawfhm2i/nft_${tokenId}_tears.json`);
+                    updateMetadata(tokenId, ipfsData + `/nft_${tokenId}_tears.json`);
 
-                } else if ((parseFloat(balanceInEth) > 2 || ethPrice > 3500) && currentURI !== `https://tan-labour-roundworm-161.mypinata.cloud/ipfs/bafybeib6j2ntpora67rfq4kekhrggjj6774ar2sox4yazotvcgqawfhm2i/nft_${tokenId}_blush.json`){
+                } else if ((parseFloat(balanceInEth) > 2 || ethPrice > 3500) && currentURI !== ipfsData + `/nft_${tokenId}_blush.json`){
                 
                     console.log(`⚠️ Condition met for Token ID: ${tokenId}. Updating metadata to blush...`); 
-                    updateMetadata(tokenId, `https://tan-labour-roundworm-161.mypinata.cloud/ipfs/bafybeib6j2ntpora67rfq4kekhrggjj6774ar2sox4yazotvcgqawfhm2i/nft_${tokenId}_blush.json`);
+                    updateMetadata(tokenId, ipfsData + `/nft_${tokenId}_blush.json`);
 
-                } else if ((2 < parseFloat(balanceInEth) > 1 || 3500 < ethPrice > 2000) && currentURI !== `https://tan-labour-roundworm-161.mypinata.cloud/ipfs/bafybeib6j2ntpora67rfq4kekhrggjj6774ar2sox4yazotvcgqawfhm2i/nft_${tokenId}.json`){
+                } else if ((2 < parseFloat(balanceInEth) > 1 || 3500 < ethPrice > 2000) && currentURI !== ipfsData + `/nft_${tokenId}.json`){
                     
                     console.log(`⚠️ Condition met for Token ID: ${tokenId}. Updating metadata to base...`); 
-                    updateMetadata(tokenId, `https://tan-labour-roundworm-161.mypinata.cloud/ipfs/bafybeib6j2ntpora67rfq4kekhrggjj6774ar2sox4yazotvcgqawfhm2i/nft_${tokenId}.json`);
+                    updateMetadata(tokenId, ipfsData + `/nft_${tokenId}.json`);
 
                 } else {
                     console.log(`Token ID: ${tokenId} - No updates required.`);
@@ -131,7 +134,7 @@ async function updateMetadata(tokenId, newURI) {
         console.log(`Attempting to update Token ID: ${tokenId}`);
         const tx = await contract.updateTokenURI(
             tokenId,
-            `https://tan-labour-roundworm-161.mypinata.cloud/ipfs/bafybeib6j2ntpora67rfq4kekhrggjj6774ar2sox4yazotvcgqawfhm2i/nft_${tokenId}_tears.json`
+            newURI
         );
         console.log(`Transaction Sent: ${tx.hash}`);
         await tx.wait();
