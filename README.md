@@ -64,6 +64,6 @@ node index.js
 
 ## Customisation
 - Update Token Conditions: Modify conditions in index.js for triggers (e.g. ETH price threshold).
-- Metadata Templates: Adjust metadata in /metadata.
-- Image Layers: Add or edit image layers in /layers.
 - Update Frequency: Modify the interval for periodic checks (setInterval) in index.js.
+
+- In case a reference for the project this was used with is needed, it can be found [here]()
